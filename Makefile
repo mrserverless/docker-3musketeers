@@ -13,6 +13,7 @@ build:
 test:
 	docker run --rm $(IMAGE_NAME) make --help
 	docker run --rm $(IMAGE_NAME) zip --help
+	docker run --rm $(IMAGE_NAME) git --help
 	docker run --rm $(IMAGE_NAME) cookiecutter --help
 .PHONY: test
 
