@@ -21,6 +21,9 @@ make test
 # go inside a 3Musketeers container
 make shell
 
+# tag which will trigger docker's build
+make tag
+
 # use 3musketeers image to generate from a Cookiecutter template
 docker run -it --rm -v $PWD:/opt/app -w /opt/app flemay/3musketeers:1.0.0 cookiecutter https://github.com/flemay/3mkts-cookiecutter-echo
 ```
