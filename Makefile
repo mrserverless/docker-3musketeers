@@ -11,10 +11,10 @@ build:
 .PHONY: build
 
 test:
-	docker run --rm $(IMAGE_NAME) make --help
-	docker run --rm $(IMAGE_NAME) zip --help
-	docker run --rm $(IMAGE_NAME) git --help
-	docker run --rm $(IMAGE_NAME) cookiecutter --help
+	docker run --rm $(IMAGE_NAME) make --version
+	docker run --rm $(IMAGE_NAME) zip --version
+	docker run --rm $(IMAGE_NAME) git --version
+	docker run --rm $(IMAGE_NAME) cookiecutter --version
 .PHONY: test
 
 shell:
