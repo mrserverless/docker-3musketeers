@@ -26,7 +26,7 @@ make test
 # go inside a 3Musketeers container
 make shell
 
-# tag which will trigger docker's build
+# tag adds a tag to the GitHub repository and automatically triggers Docker's build
 make tag
 
 # use 3musketeers image to generate from a Cookiecutter template
