@@ -5,14 +5,23 @@
 
 # Docker - 3musketeers
 
-🐳 Lightweight image containing the essentials for a 3 Musketeers project.
+🐳 Lightweight image with essential tools for a 3 Musketeers project.
 
 ## Tools
 
-- make
-- zip
-- git
-- [Cookiecutter](https://github.com/audreyr/cookiecutter)
+### make
+
+The [3 Musketeers](https://github.com/flemay/3musketeers) pattern suggests a `make target` to call a `make _target` using Compose. However, `make` would often be in big images like [Golang stretch](https://hub.docker.com/_/golang/) and not in small ones like [Alpine](https://hub.docker.com/_/alpine/). Not every project needs big images. There are solutions in the [3 Musketeers Guidelines](https://github.com/flemay/3musketeers/blob/master/GUIDELINES.md) to what to do when the desired image does not have `make`.
+
+See [Echo](https://github.com/flemay/3mkts-cookiecutter-echo) example.
+
+### zip
+
+Another suggested pattern is to zip your dependencies. Even big images like [Golang stretch](https://hub.docker.com/_/golang/) does not include zip. It does include `tar` which you can use but sometimes a zip file is required like when deploying your Lambda function to AWS.
+
+### Cookiecutter & git
+
+The cherry on top! [Cookiecutter](https://github.com/audreyr/cookiecutter) is used for [3 Musketeers examples](https://github.com/flemay/3musketeers) and this image allows use to generete them with the only need of Docker! Cookiecutter needs `git` to download from a url.
 
 ## Usage
 
