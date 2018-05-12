@@ -1,3 +1,8 @@
+[![Project status](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/flemay/docker-golang/releases)
+[![License](https://img.shields.io/dub/l/vibe-d.svg)](LICENSE)
+[![Docker Build Status](https://img.shields.io/docker/build/flemay/3musketeers.svg)](https://hub.docker.com/r/flemay/3musketeers)
+[![Docker Automated build](https://img.shields.io/docker/automated/flemay/3musketeers.svg)](https://hub.docker.com/r/flemay/3musketeers)
+
 # Docker 3 Musketeers
 
 Lightweight image containing the essentials for a 3 Musketeers project.
