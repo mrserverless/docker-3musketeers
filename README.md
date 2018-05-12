@@ -3,9 +3,9 @@
 [![Docker Build Status](https://img.shields.io/docker/build/flemay/3musketeers.svg)](https://hub.docker.com/r/flemay/3musketeers)
 [![Docker Automated build](https://img.shields.io/docker/automated/flemay/3musketeers.svg)](https://hub.docker.com/r/flemay/3musketeers)
 
-# 🐳 Docker - 3musketeers
+# Docker - 3musketeers
 
-Lightweight image containing the essentials for a 3 Musketeers project.
+🐳 Lightweight image containing the essentials for a 3 Musketeers project.
 
 ## Tools
 
