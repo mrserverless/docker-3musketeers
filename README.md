@@ -48,7 +48,7 @@ docker run -it --rm -v $PWD:/opt/app -w /opt/app flemay/3musketeers cookiecutter
 
 ## Versioning
 
-This image will always be built with tag `latest` so tools will be always up to date. This may cause issues to your usage of this image if any tool has a breaking change.
+This image will always be built with the tag `latest` so tools will always be up to date. This may cause issues if any tool has a breaking change. For instance, if Cookiecutter introduces a breaking change then the Cookiecutter templates may need to be updated.
 
 ## Docker build process
 
