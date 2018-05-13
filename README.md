@@ -19,6 +19,10 @@ See [Echo](https://github.com/flemay/3mkts-cookiecutter-echo) example.
 
 Another suggested pattern is to zip your dependencies. Even big images like [Golang stretch](https://hub.docker.com/_/golang/) does not include zip. It does include `tar` which you can use but sometimes a zip file is required like when deploying your Lambda function to AWS.
 
+### curl
+
+Just useful utility to use instead of wget.
+
 ### Cookiecutter & git
 
 The cherry on top! [Cookiecutter](https://github.com/audreyr/cookiecutter) is used for [3 Musketeers examples](https://github.com/flemay/3musketeers) and this image allows use to generete them with the only need of Docker! Cookiecutter needs `git` to download from a url.
@@ -41,3 +45,13 @@ make tag
 # use 3musketeers image to generate from a Cookiecutter template
 docker run -it --rm -v $PWD:/opt/app -w /opt/app flemay/3musketeers cookiecutter https://github.com/flemay/3mkts-cookiecutter-echo
 ```
+
+## Versioning
+
+This image will always be built with tag `latest` so tools will be always up to date. This may cause issues to your usage of this image if any tool has a breaking change.
+
+## Docker build process
+
+In a nutshell, any change to master triggers a [Travis build](https://travis-ci.org/flemay/docker-3musketeers) and if the tests paased it triggers a [Docker Hub build](https://hub.docker.com/r/flemay/3musketeers/builds/).
+
+To ensure the build process goes only through Travis, the automatic build on Docker Hub has been disabled.
