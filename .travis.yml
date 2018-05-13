@@ -1,0 +1,10 @@
+sudo: required
+
+# no language is needed but providing one to travis speeds up the build
+language: go
+
+services:
+  - docker
+
+script:
+  - make build test triggerDockerHubBuild clean

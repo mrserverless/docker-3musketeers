@@ -1,0 +1,4 @@
+envvars:
+  - name: DOCKERHUB_TRIGGER_URL
+    desc: URL to trigger the build to docker hub
+    example: https://registry.hub.docker.com/u/flemay/3musketeers/trigger/trigger-token

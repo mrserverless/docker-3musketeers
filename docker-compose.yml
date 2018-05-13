@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  envvars:
+    image: flemay/envvars:0.0.3
+    env_file: .env
+    volumes:
+      - .:/opt/app
+    working_dir: /opt/app
+
+  3musketeers:
+    image: flemay/3musketeers
+    env_file: .env
+    volumes:
+      - .:/opt/app
+    working_dir: /opt/app
