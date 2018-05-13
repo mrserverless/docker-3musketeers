@@ -47,7 +47,7 @@ docker run -it --rm -v $PWD:/opt/app -w /opt/app flemay/3musketeers cookiecutter
 
 This image will always be built with the tag `latest` so tools will always be up to date. This may cause issues if any tool has a breaking change. For instance, if Cookiecutter introduces a breaking change then the Cookiecutter templates may need to be updated.
 
-## Docker build process
+## Automated build process
 
 In a nutshell, any change to master triggers a [Travis build](https://travis-ci.org/flemay/docker-3musketeers) and if the tests paased it triggers a [Docker Hub build](https://hub.docker.com/r/flemay/3musketeers/builds/). To ensure the build process goes only through Travis, the automatic build on Docker Hub has been disabled.
 
