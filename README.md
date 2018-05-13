@@ -49,6 +49,6 @@ This image will always be built with the tag `latest` so tools will always be up
 
 ## Automated build process
 
-In a nutshell, any change to master triggers a [Travis build](https://travis-ci.org/flemay/docker-3musketeers) and if the tests paased it triggers a [Docker Hub build](https://hub.docker.com/r/flemay/3musketeers/builds/). To ensure the build process goes only through Travis, the automatic build on Docker Hub has been disabled.
+In a nutshell, any change to master triggers a [Travis build](https://travis-ci.org/flemay/docker-3musketeers) and if the tests passed it triggers a [Docker Hub build](https://hub.docker.com/r/flemay/3musketeers/builds/). The automatic build on Docker Hub has been disabled ensuring the build process goes only through Travis.
 
-To make the image as fresh as possible, a cron task has been set up in Travis which will trigger the build every month.
+A cron task in Travis triggers a build every month making the image as fresh as possible automatically.
