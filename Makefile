@@ -1,5 +1,6 @@
 VERSION = latest
 IMAGE_NAME ?= flemay/3musketeers:$(VERSION)
+TAG = $(VERSION)
 ENVFILE = .env
 DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envvars:0.0.3
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
@@ -20,7 +21,8 @@ build:
 	docker build --no-cache -t $(IMAGE_NAME) .
 .PHONY: build
 
-test:
+test: $(ENVFILE)
+	$(COMPOSE_RUN_ENVVARS) validate
 	docker run --rm $(IMAGE_NAME) make --version
 	docker run --rm $(IMAGE_NAME) zip --version
 	docker run --rm $(IMAGE_NAME) git --version
@@ -32,11 +34,15 @@ shell:
 	docker run --rm -it -v $(PWD):/opt/app $(IMAGE_NAME) sh -l
 .PHONY: shell
 
+remove:
+	docker rmi -f $(IMAGE_NAME)
+.PHONY: remove
+
 tag:
-	-git tag -d $(VERSION)
-	-git push origin :refs/tags/$(VERSION)
-	git tag $(VERSION)
-	git push origin $(VERSION)
+	-git tag -d $(TAG)
+	-git push origin :refs/tags/$(TAG)
+	git tag $(TAG)
+	git push origin $(TAG)
 .PHONY: tag
 
 triggerDockerHubBuild: $(ENVFILE)
