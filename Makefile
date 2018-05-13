@@ -1,6 +1,5 @@
 VERSION = latest
 IMAGE_NAME ?= flemay/3musketeers:$(VERSION)
-TAG = $(VERSION)
 ENVFILE = .env
 DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envvars:0.0.3
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
@@ -37,13 +36,6 @@ shell:
 remove:
 	docker rmi -f $(IMAGE_NAME)
 .PHONY: remove
-
-tag:
-	-git tag -d $(TAG)
-	-git push origin :refs/tags/$(TAG)
-	git tag $(TAG)
-	git push origin $(TAG)
-.PHONY: tag
 
 triggerDockerHubBuild: $(ENVFILE)
 	$(COMPOSE_RUN_ENVVARS) ensure

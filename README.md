@@ -21,7 +21,7 @@ Another suggested pattern is to zip your dependencies. Even big images like [Gol
 
 ### curl
 
-Just useful utility to use instead of wget.
+Useful utility to use instead of wget.
 
 ### Cookiecutter & git
 
@@ -38,9 +38,6 @@ make test
 
 # go inside a 3Musketeers container
 make shell
-
-# tag adds a tag to the GitHub repository and automatically triggers Docker's build
-make tag
 
 # use 3musketeers image to generate from a Cookiecutter template
 docker run -it --rm -v $PWD:/opt/app -w /opt/app flemay/3musketeers cookiecutter https://github.com/flemay/3mkts-cookiecutter-echo
