@@ -26,7 +26,6 @@ test: $(ENVFILE)
 	docker run --rm $(IMAGE_NAME) zip --version
 	docker run --rm $(IMAGE_NAME) git --version
 	docker run --rm $(IMAGE_NAME) curl --version
-	docker run --rm $(IMAGE_NAME) cookiecutter --version
 .PHONY: test
 
 shell:
