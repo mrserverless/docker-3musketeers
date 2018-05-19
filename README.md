@@ -30,7 +30,7 @@ make build
 # test image
 make test
 
-# go inside a 3Musketeers container
+# go inside a musketeers container
 make shell
 ```
 
