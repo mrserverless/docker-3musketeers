@@ -7,7 +7,7 @@ services:
       - .:/opt/app
     working_dir: /opt/app
 
-  3musketeers:
+  musketeers:
     image: flemay/musketeers
     env_file: .env
     volumes:
