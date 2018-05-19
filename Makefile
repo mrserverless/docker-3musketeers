@@ -1,9 +1,9 @@
 VERSION = latest
-IMAGE_NAME ?= flemay/3musketeers:$(VERSION)
+IMAGE_NAME ?= flemay/musketeers:$(VERSION)
 ENVFILE = .env
 DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envvars:0.0.3
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
-COMPOSE_RUN_3MKTS = docker-compose run --rm 3musketeers
+COMPOSE_RUN_MUSKETEERS = docker-compose run --rm musketeers
 
 .env:
 	$(DOCKER_RUN_ENVVARS) envfile
@@ -38,7 +38,7 @@ remove:
 
 triggerDockerHubBuild: $(ENVFILE)
 	$(COMPOSE_RUN_ENVVARS) ensure
-	$(COMPOSE_RUN_3MKTS) make _triggerDockerHubBuild
+	$(COMPOSE_RUN_MUSKETEERS) make _triggerDockerHubBuild
 .PHONY: triggerDockerHubBuild
 
 clean: $(ENVFILE)
