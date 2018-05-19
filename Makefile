@@ -5,6 +5,9 @@ DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envva
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
 COMPOSE_RUN_MUSKETEERS = docker-compose run --rm musketeers
 
+all: envfileExample build test clean
+.PHONY: all
+
 .env:
 	$(DOCKER_RUN_ENVVARS) envfile
 
@@ -26,6 +29,7 @@ test: $(ENVFILE)
 	docker run --rm $(IMAGE_NAME) zip --version
 	docker run --rm $(IMAGE_NAME) git --version
 	docker run --rm $(IMAGE_NAME) curl --version
+	docker run --rm $(IMAGE_NAME) which openssl
 .PHONY: test
 
 shell:

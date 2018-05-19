@@ -20,6 +20,7 @@ Another suggested pattern is to zip your dependencies. Even big images like [Gol
 
 - curl
 - git
+- openssl
 
 ## Usage
 
