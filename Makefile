@@ -1,7 +1,7 @@
 VERSION = latest
 IMAGE_NAME ?= flemay/musketeers:$(VERSION)
 ENVFILE = .env
-DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envvars:0.0.3
+DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envvars
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
 COMPOSE_RUN_MUSKETEERS = docker-compose run --rm musketeers
 

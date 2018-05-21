@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   envvars:
-    image: flemay/envvars:0.0.3
+    image: flemay/envvars
     env_file: .env
     volumes:
       - .:/opt/app
