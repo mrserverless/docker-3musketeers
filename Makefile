@@ -5,6 +5,9 @@ DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envva
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
 COMPOSE_RUN_MUSKETEERS = docker-compose run --rm musketeers
 
+travis: build test triggerDockerHubBuilds clean
+.PHONY: travis
+
 all: envfileExample build test clean
 .PHONY: all
 
@@ -40,16 +43,20 @@ remove:
 	docker rmi -f $(IMAGE_NAME)
 .PHONY: remove
 
-triggerDockerHubBuild: $(ENVFILE)
-	$(COMPOSE_RUN_ENVVARS) ensure
-	$(COMPOSE_RUN_MUSKETEERS) make _triggerDockerHubBuild
-.PHONY: triggerDockerHubBuild
-
 clean: $(ENVFILE)
 	docker-compose down --remove-orphans
 	$(DOCKER_RUN_ENVVARS) envfile --rm
 .PHONY: clean
 
-_triggerDockerHubBuild:
+#######################
+# DOCKER HUB TRIGGERS #
+#######################
+
+triggerDockerHubBuilds: $(ENVFILE)
+	$(COMPOSE_RUN_ENVVARS) ensure
+	$(COMPOSE_RUN_MUSKETEERS) make _triggerDockerHubBuildForTagLatest
+.PHONY: triggerDockerHubBuilds
+
+_triggerDockerHubBuildForTagLatest:
 	curl -H "Content-Type: application/json" --data '{"docker_tag": "latest"}' -X POST $(DOCKERHUB_TRIGGER_URL)
-.PHONY: _triggerDockerHubBuild
+.PHONY: _triggerDockerHubBuildForTagLatest

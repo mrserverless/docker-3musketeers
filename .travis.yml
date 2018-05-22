@@ -7,4 +7,4 @@ services:
   - docker
 
 script:
-  - make build test triggerDockerHubBuild clean
+  - make travis
