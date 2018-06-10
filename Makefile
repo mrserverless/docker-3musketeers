@@ -1,19 +1,19 @@
 VERSION = latest
 IMAGE_NAME = flemay/musketeers:$(VERSION)
-ENVFILE = .env
 DOCKER_RUN_ENVVARS = docker run --rm -v $(PWD):/opt/app -w /opt/app flemay/envvars
 COMPOSE_RUN_ENVVARS = docker-compose run --rm envvars
 COMPOSE_RUN_MUSKETEERS = docker-compose run --rm musketeers
 DOCKER_RUN_MUSKETEERS = docker run --rm $(IMAGE_NAME)
 
-travis: build test triggerDockerHubBuilds clean
+travis: envfile build test triggerDockerHubBuilds clean
 .PHONY: travis
 
 all: envfileExample build test clean
 .PHONY: all
 
-.env:
-	$(DOCKER_RUN_ENVVARS) envfile
+envfile:
+	$(DOCKER_RUN_ENVVARS) envfile --overwrite
+.PHONY: envfile
 
 envfileExample:
 	$(DOCKER_RUN_ENVVARS) envfile --example --overwrite
@@ -27,7 +27,7 @@ build:
 	docker build --no-cache -t $(IMAGE_NAME) .
 .PHONY: build
 
-test: $(ENVFILE)
+test:
 	$(COMPOSE_RUN_ENVVARS) validate
 	$(DOCKER_RUN_MUSKETEERS) make --version
 	$(DOCKER_RUN_MUSKETEERS) zip --version
@@ -46,7 +46,7 @@ remove:
 	docker rmi -f $(IMAGE_NAME)
 .PHONY: remove
 
-clean: $(ENVFILE)
+clean:
 	docker-compose down --remove-orphans
 	$(DOCKER_RUN_ENVVARS) envfile --rm
 .PHONY: clean
@@ -55,7 +55,7 @@ clean: $(ENVFILE)
 # DOCKER HUB TRIGGERS #
 #######################
 
-triggerDockerHubBuilds: $(ENVFILE)
+triggerDockerHubBuilds:
 	$(COMPOSE_RUN_ENVVARS) ensure
 	$(COMPOSE_RUN_MUSKETEERS) make _triggerDockerHubBuildForTagLatest
 .PHONY: triggerDockerHubBuilds
