@@ -61,5 +61,5 @@ triggerDockerHubBuilds:
 .PHONY: triggerDockerHubBuilds
 
 _triggerDockerHubBuildForTagLatest:
-	curl -H "Content-Type: application/json" --data '{"docker_tag": "latest"}' -X POST $(DOCKERHUB_TRIGGER_URL)
+	@curl -H "Content-Type: application/json" --data '{"docker_tag": "latest"}' -X POST $(DOCKERHUB_TRIGGER_URL)
 .PHONY: _triggerDockerHubBuildForTagLatest
