@@ -36,6 +36,7 @@ test:
 	$(DOCKER_RUN_MUSKETEERS) which openssl
 	$(DOCKER_RUN_MUSKETEERS) docker --version
 	$(DOCKER_RUN_MUSKETEERS) docker-compose --version
+	$(DOCKER_RUN_MUSKETEERS) bash --version
 .PHONY: test
 
 shell:

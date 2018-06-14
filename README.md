@@ -25,18 +25,19 @@ Another suggested pattern is to zip your dependencies. Even big images like [Gol
 - curl
 - git
 - openssl
+- bash
 
 ## Usage
 
 ```bash
+# generate .env file
+$ make envfile
 # build image
-make build
-
+$ make build
 # test image
-make test
-
+$ make test
 # go inside a musketeers container
-make shell
+$ make shell
 ```
 
 ## Versioning
