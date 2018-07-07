@@ -27,7 +27,7 @@ build:
 	docker build --no-cache -t $(IMAGE_NAME) .
 .PHONY: build
 
-test:
+test: envfile
 	$(COMPOSE_RUN_ENVVARS) validate
 	$(DOCKER_RUN_MUSKETEERS) make --version
 	$(DOCKER_RUN_MUSKETEERS) zip --version
@@ -37,6 +37,7 @@ test:
 	$(DOCKER_RUN_MUSKETEERS) docker --version
 	$(DOCKER_RUN_MUSKETEERS) docker-compose --version
 	$(DOCKER_RUN_MUSKETEERS) bash --version
+	$(DOCKER_RUN_MUSKETEERS) docker-sync --version
 .PHONY: test
 
 shell:
